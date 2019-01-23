@@ -50,7 +50,7 @@ def msg_list(n=None):
 	for f in files:
 		temp = f.split('_')
 		print('{:>5}{:>20}{:>15}'.format(temp[0], temp[1], temp[2][0:10]))
-		
+
 def read_spf_msg(n):
 	for f in get_file_names():
 		temp = f.split('_')
@@ -100,11 +100,11 @@ def get_date():
 def make_name(user):
 	"""Creates a file name based on the specified user's messages."""
 	return str(get_num_msgs() + 1) + '_' + getuser() + '_' + get_date()
-	
+
 def send_msg(user=None):
 	"""Puts the user through a menu, asking for user then message contents.
 	Sends the mail after."""
-	users = os.listdir('/home')
+	users = os.listdir('/var/local/messager/')
 	while user not in users:
 		if user != None:
 			print('User not found. Try again.')
@@ -116,11 +116,13 @@ def send_msg(user=None):
 	while text != '':
 		full_text += text
 		text = input()
-	with open('/var/local/messager/' + user + '/' + make_name(user), 'w') as msg_file:
+	file_name = '/var/local/messager/' + user + '/' + make_name(user)
+	with open(file_name, 'w') as msg_file:
 		msg_file.write(full_text)
 	num_msgs = get_num_msgs()
 	with open('/var/local/messager/' + user + '.num', 'w') as num_file:
 		num_file.write(str(num_msgs + 1))
+	shutil.chown(file_name, user=user, group=user)
 
 def get_help():
 	print('messager is a python-based messaging application for use with linux servers, written and maintained by derekthesnake.')
