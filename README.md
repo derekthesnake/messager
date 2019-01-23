@@ -5,28 +5,28 @@ Next intended feature is the option to initialize users in the /var/local/messag
 
 It currently has no support for alerts once a message is received, but this is a possible future feature.
 
-===Usage===
+## Usage
 messager [c | h | l | r | s]
 messager [check | help | list | read | send]
 
-====messager check====
+### messager check
 is typically put into ~/.bashrc and prints out a short string notifying the user whether or not they have unread messages.
 
-====messager help====
+### messager help
 provides the user with information about the various messager commands.
 
-====messager list====
+### messager list
 prints out a list of the user's received messages.
 
 A numerical argument may be specified, which will show the last <number> messages received.
 
-====messager read====
+### messager read
 Without arguments, messager read shows unopened messages if the user has any.
 
 If a numerical argument is specified, this will show the selected message.
 Find the number of the message with message list.
 
-====messager send====
+### messager send
 sends a message containing text (prompted by the program) to a user (prompted by a program)
 
 Optionally, you may supply the username as an argument, which will skip the username prompt.
