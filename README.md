@@ -7,6 +7,7 @@ It currently has no support for alerts once a message is received, but this is a
 
 ## Usage
 messager [c | h | l | r | s]
+
 messager [check | help | list | read | send]
 
 ### messager check
